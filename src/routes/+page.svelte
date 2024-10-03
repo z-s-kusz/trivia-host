@@ -13,13 +13,10 @@
             <p>{quiz.description}</p>
         {/if}
         <a href={quiz.url}>
-            <button type="button">{quiz.name}</button>
+            <button type="button" class="big-btn">{quiz.name}</button>
         </a>
     </article>
 {/each}
 
 <style>
-    .quiz-info button {
-        width: min(400px, 100%);
-    }
 </style>

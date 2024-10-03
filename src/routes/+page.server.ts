@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { SHEET_ID, GOOG_CREDENTIALS } from '$env/static/private';
-import type { QuizInfo } from "$lib/types";
+import type { QuizInfo } from '$lib/types';
 
 const serviceEndpoint = 'https://sheets.googleapis.com/v4/spreadsheets';
 const metaDatasheet = 'Metadata';

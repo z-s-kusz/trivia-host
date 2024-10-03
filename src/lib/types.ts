@@ -1,7 +1,8 @@
 export type Player = {
     id: string;
     name: string;
-    questionsAnswered: string[];
+    allQuestionsAnswered: string[];
+    answersByRound: string[][];
 }
 
 export type Question = {
