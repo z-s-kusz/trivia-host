@@ -11,5 +11,5 @@
 
 <p>For 1 or 2 players.</p>
 <a href="/{$page.params.slug}/flashcards">
-    <button type="button" class="big-btn">Flashcards</button>
+    <button type="button" class="big-btn" disabled>Flashcards</button>
 </a>
