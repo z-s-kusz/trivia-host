@@ -30,6 +30,7 @@
     }
 
     const handleSubmit = () => {
+        if (game.players.length === 0) return;
         game.gameState = 'confirm-setup';
     };
 

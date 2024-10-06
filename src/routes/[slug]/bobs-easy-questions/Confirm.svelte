@@ -16,27 +16,29 @@
 
 <h2>Confirm Settings</h2>
 
-<h3>Play {game.quiz.name} with {playerPlayersMessage}?</h3>
-<ul>
-    {#each game.players as player}
-        <li>{player.name}</li>
-    {/each}
-</ul>
+<section class="card">
+    <h3>Play {game.quiz.name} with {playerPlayersMessage}?</h3>
+    <ul>
+        {#each game.players as player}
+            <li>{player.name}</li>
+        {/each}
+    </ul>
 
-<section class="controls">
-    <div>
-        <a href="/">
-            <button type="button">Change Quiz</button>
-        </a>
+    <div class="controls">
+        <div>
+            <a href="/">
+                <button type="button">Change Quiz</button>
+            </a>
 
-        <button type="button" onclick={goBack}>Change Names</button>
+            <button type="button" onclick={goBack}>Change Names</button>
+        </div>
+
+        <button type="button" class="big-btn" onclick={confirmSettings}>Confirm</button>
     </div>
-
-    <button type="button" class="big-btn" onclick={confirmSettings}>Confirm</button>
 </section>
-
 <style>
     .controls {
+        justify-self: center;
         display: flex;
         flex-direction: column;
 

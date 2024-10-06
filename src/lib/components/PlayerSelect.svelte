@@ -24,7 +24,7 @@
 
 <h2>Enter Player/Team Names</h2>
 
-<form onsubmit={() => handleSubmit()}>
+<form onsubmit={() => handleSubmit()} class="card">
     {#each players as player, index (player.id) }
         <div class="player-entry">
             <input value={player.name} oninput={(e) => onInput(e, index)} required />
@@ -40,11 +40,13 @@
 
 <style>
     .player-entry {
+        justify-self: center;
         display: flex;
     }
 
     .controls {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 </style>

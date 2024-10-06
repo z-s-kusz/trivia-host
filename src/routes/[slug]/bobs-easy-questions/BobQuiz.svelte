@@ -61,19 +61,55 @@
     }
 </script>
 
-{#if previousEntry && game.questionIndex !== 0}
-    <button type="button" onclick={undoLastEntry}>Undo Last Qustion</button>
-{/if}
+<h2>Question {game.questionIndex + 1}</h2>
 <details>
     <summary>{currentQuestion.question}</summary>
     {currentQuestion.answer}
 </details>
 
-<p>If someone answered correctly select that player/team, otherwise select 'No One Knows'</p>
-<button type="button" class="big-btn" onclick={() => enterResponse()}>No One Knows</button>
+<section class="controls">
+    <button type="button" class="big-btn" onclick={() => enterResponse()}>No One Knows</button>
 
-{#each game.players as player }
-    <button type="button" class="big-btn" onclick={() => enterResponse(player)}>
-        {player.name}
-    </button>
-{/each}
+    {#each game.players as player }
+        <button type="button" class="big-btn" onclick={() => enterResponse(player)}>
+            {player.name}
+        </button>
+    {/each}
+
+    {#if previousEntry && game.questionIndex !== 0}
+        <hr />
+        <button type="button" class="big-btn" onclick={undoLastEntry}>Undo Last Qustion</button>
+    {/if}
+</section>
+
+<footer>
+    <details>
+        <summary>Help</summary>
+        <p>Select the player/team that answers correctly, otherwise select 'No One Knows.'</p>
+        <p>
+            'Undo Last entry' is an undo button in case you clicked an incorrect tem/player.
+            It takes you back to the previous question and removes the point awarded on the previous question.
+        </p>
+    </details>
+</footer>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        button {
+            margin-right: 0;
+        }
+    }
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 1rem;
+        border-top: none;
+    }
+</style>

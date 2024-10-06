@@ -12,7 +12,7 @@
 <h2>Round {game.roundIndex + 1} Summary</h2>
 
 {#each game.players as player }
-    <section>
+    <section class="card">
         <h4>{player.name}</h4>
         <p>{player.allQuestionsAnswered.length} / {game.quiz.questions.length}</p>
     </section>
