@@ -3,8 +3,8 @@
     import type { Player } from '$lib/types';
 
     interface Props {
-        handleSubmit: Function,
-        players: Player[],
+        handleSubmit: Function;
+        players: Player[];
     }
 
     let { handleSubmit, players = $bindable() }: Props = $props();
@@ -22,7 +22,7 @@
     };
 </script>
 
-<h1>Enter Player/Team Names</h1>
+<h2>Enter Player/Team Names</h2>
 
 <form onsubmit={() => handleSubmit()}>
     {#each players as player, index (player.id) }
@@ -31,12 +31,20 @@
             <button type="button" onclick={() => removePlayer(player.id)}>Remove</button>
         </div>
     {/each}
-    <button type="button" onclick={addPlayer}>Add Player/Team</button>
-    <button type="submit">Enter</button>
+    <section class="controls">
+        <button type="button" class="big-btn" onclick={addPlayer}>Add Player/Team</button>
+        <button type="submit" class="big-btn">Submit</button>
+    </section>
+
 </form>
 
 <style>
     .player-entry {
         display: flex;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
     }
 </style>

@@ -5,6 +5,7 @@
     import type { Game } from '$lib/types.js';
     import { createNewPlayer } from '$lib/utils/default-items';
     import Confirm from './Confirm.svelte';
+    import RoundSummary from '$lib/components/RoundSummary.svelte';
 
     let { data } = $props();
     let game = $state<Game>({
@@ -35,8 +36,22 @@
     const confirmSettings = () => {
         game.gameState = 'live-quiz';
     };
+
     const goBack = () => {
         game.gameState = 'menu';
+    };
+
+    const nextRound = () => {
+        game.players.forEach((player) => {
+            player.answersByRound.push([]);
+        });
+        game.roundIndex = game.roundIndex + 1;
+        game.gameState = 'live-quiz';
+    };
+
+    const finishRound = () => {
+        game.gameState = 'results';
+        game.questionIndex = 0;
     };
 </script>
 
@@ -45,7 +60,7 @@
 {:else if game.gameState === 'confirm-setup'}
     <Confirm {game} {confirmSettings} {goBack} />
 {:else if game.gameState === 'results'}
-    <h2>Game Ended I wonder how you did?</h2>
+    <RoundSummary {game} {nextRound} />
 {:else} <!--live-game -->
-    <BobQuiz bind:game={game} />
+    <BobQuiz bind:game={game} {finishRound} />
 {/if}

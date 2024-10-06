@@ -2,9 +2,11 @@
     let { data } = $props();
 </script>
 
-<h1>Welcome to Trivia Host</h1>
+<h2>Welcome to Trivia Host</h2>
 
-<p>Select a quiz to begin</p>
+<p>
+    <b>Select a quiz to begin</b>
+</p>
 
 {#each data.quizInfo as quiz }
     <article class="quiz-info">
@@ -19,4 +21,11 @@
 {/each}
 
 <style>
+    article {
+        /* --text-main from water.css */
+        border: 2px solid var(--text-main);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
 </style>

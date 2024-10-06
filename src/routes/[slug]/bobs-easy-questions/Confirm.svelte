@@ -2,9 +2,9 @@
     import type { Game } from '$lib/types';
 
     interface Props {
-        game: Game,
-        confirmSettings: () => void,
-        goBack: () => void,
+        game: Game;
+        confirmSettings: () => void;
+        goBack: () => void;
     }
 
     let { confirmSettings, goBack, game }: Props = $props();
