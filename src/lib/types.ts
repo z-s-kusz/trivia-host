@@ -30,5 +30,7 @@ export type Game = {
     quiz: Quiz;
     players: Player[];
     gameState: 'menu' | 'confirm-setup' | 'live-quiz' | 'results';
+    questionIndex: number;
     roundIndex: number;
+    wrongAnswerCounter: number;
 }

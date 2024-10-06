@@ -27,7 +27,7 @@
 <form onsubmit={() => handleSubmit()}>
     {#each players as player, index (player.id) }
         <div class="player-entry">
-            <input value={player.name} oninput={(e) => onInput(e, index)} />
+            <input value={player.name} oninput={(e) => onInput(e, index)} required />
             <button type="button" onclick={() => removePlayer(player.id)}>Remove</button>
         </div>
     {/each}
