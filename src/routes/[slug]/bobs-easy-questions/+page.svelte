@@ -6,6 +6,7 @@
     import { createNewPlayer } from '$lib/utils/default-items';
     import Confirm from './Confirm.svelte';
     import RoundSummary from '$lib/components/RoundSummary.svelte';
+    import SvelteTransition from '$lib/components/SvelteTransition.svelte';
 
     let { data } = $props();
     let game = $state<Game>({
@@ -57,11 +58,19 @@
 </script>
 
 {#if game.gameState === 'menu'}
-    <PlayerSelect handleSubmit={handleSubmit} bind:players={game.players} />
+    <SvelteTransition>
+        <PlayerSelect handleSubmit={handleSubmit} bind:players={game.players} />
+    </SvelteTransition>
 {:else if game.gameState === 'confirm-setup'}
-    <Confirm {game} {confirmSettings} {goBack} />
+    <SvelteTransition>
+        <Confirm {game} {confirmSettings} {goBack} />
+    </SvelteTransition>
 {:else if game.gameState === 'results'}
-    <RoundSummary {game} {nextRound} />
+    <SvelteTransition>
+        <RoundSummary {game} {nextRound} />
+    </SvelteTransition>
 {:else} <!--live-game -->
-    <BobQuiz bind:game={game} {finishRound} />
+    <SvelteTransition>
+        <BobQuiz bind:game={game} {finishRound} />
+    </SvelteTransition>
 {/if}
