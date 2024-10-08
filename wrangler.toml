@@ -1,0 +1,3 @@
+# only here for cloudflare, has nothing else to do with the project
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2024-09-23"
