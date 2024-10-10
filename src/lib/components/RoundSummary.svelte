@@ -14,9 +14,17 @@
 {#each game.players as player }
     <section class="card">
         <h4>{player.name}</h4>
-        <p>{player.allQuestionsAnswered.length} / {game.quiz.questions.length}</p>
+        <p><b>Overall:</b>  {player.allQuestionsAnswered.length}/{game.quiz.questions.length}</p>
+
+            {#if game.roundIndex > 0}
+                {#each player.answersByRound as answersByRound, roundIndex}
+                    <p><b>Round {roundIndex + 1}:</b>  {answersByRound.length}/{game.quiz.questions.length}</p>
+                {/each}
+            {/if}
     </section>
 {/each}
+
+
 
 <section class="controls">
     <button type="button" class="big-btn" onclick={nextRound}>Start New Round</button>
@@ -29,5 +37,15 @@
     .controls {
         display: flex;
         flex-direction: column;
+    }
+    .card {
+        h4 {
+            margin: 0;
+            line-height: 1.5rem;
+            border-bottom: 1px solid var(--text-main);
+        }
+        P {
+            margin: 0.5rem 0;
+        }
     }
 </style>
