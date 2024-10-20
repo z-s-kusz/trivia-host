@@ -1,3 +1,7 @@
+:root {
+    --correct-color: rgb(82, 148, 28);
+}
+
 .big-btn, a:has(.big-btn) {
     width: min(400px, 100%);
 }

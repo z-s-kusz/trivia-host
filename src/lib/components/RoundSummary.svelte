@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Game } from '$lib/types';
+    import type { Game, Player } from '$lib/types';
 
     interface Props {
         game: Game;
@@ -7,6 +7,11 @@
     }
 
     let { game, nextRound }: Props = $props();
+
+    const showWinClass = (player: Player): string => {
+        return player.allQuestionsAnswered.length === game.quiz.questions.length ? 'win' : '';
+    };
+
 </script>
 
 <h2>Round {game.roundIndex + 1} Summary</h2>
@@ -14,7 +19,9 @@
 {#each game.players as player }
     <section class="card">
         <h4>{player.name}</h4>
-        <p><b>Overall:</b>  {player.allQuestionsAnswered.length}/{game.quiz.questions.length}</p>
+        <p class={showWinClass(player)}>
+            <b>Overall:</b>  {player.allQuestionsAnswered.length}/{game.quiz.questions.length}
+        </p>
 
             {#if game.roundIndex > 0}
                 {#each player.answersByRound as answersByRound, roundIndex}
@@ -23,8 +30,6 @@
             {/if}
     </section>
 {/each}
-
-
 
 <section class="controls">
     <button type="button" class="big-btn" onclick={nextRound}>Start New Round</button>
@@ -47,5 +52,8 @@
         P {
             margin: 0.5rem 0;
         }
+    }
+    .win {
+        background-color: var(--correct-color);
     }
 </style>
