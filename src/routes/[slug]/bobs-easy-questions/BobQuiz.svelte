@@ -59,6 +59,10 @@
 
         player.allQuestionsAnswered = getAllQuestionsAnswered(player.answersByRound);
     }
+
+    function getWinClass(player: Player): string {
+        return player.allQuestionsAnswered.includes(currentQuestion.id) ? 'win' : '';
+    }
 </script>
 
 <h2>Question {game.questionIndex + 1}</h2>
@@ -71,7 +75,7 @@
     <button type="button" class="big-btn" onclick={() => enterResponse()}>No One Knows</button>
 
     {#each game.players as player }
-        <button type="button" class="big-btn" onclick={() => enterResponse(player)}>
+        <button type="button" class="big-btn {getWinClass(player)}" onclick={() => enterResponse(player)}>
             {player.name}
         </button>
     {/each}
@@ -111,5 +115,9 @@
         width: 100%;
         padding: 0 1rem;
         border-top: none;
+    }
+
+    .win {
+         background-color: var(--correct-color);
     }
 </style>
